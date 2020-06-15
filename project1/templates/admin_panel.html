@@ -1,0 +1,50 @@
+{%extends 'index.html'%}{%block admin%}
+<div class='table-responsive custom-margin-top'>
+    <table class="table table-sm table-hover table-dark table-bordered">
+        <thead style="text-align: center;font: 2em sans-serif;">
+            <tr>
+                <th>Parameters</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Seniority List</td>
+                <td><input type="button" onclick="window.location.href='add_seniority';" value="Add">
+                </td>
+                <td><button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>Notifications/Circulars</td>
+                <td><input type="button" onclick="window.location.href='add_notification';" value="Add"></td>
+                <td><button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>Retirment List</td>
+                <td><button>Add</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>SBF Benificiaries</td>
+                <td><button>Add</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>Union Matters</td>
+                <td><button>Add</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>Question Bank</td>
+                <td><input type="button" onclick="window.location.href='add_qb';" value="Add"></td>
+                <td><button>Delete</button></td>
+            </tr>
+            <tr>
+                <td>Grievences</td>
+                <td><button>Add</button></td>
+                <td><button>Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

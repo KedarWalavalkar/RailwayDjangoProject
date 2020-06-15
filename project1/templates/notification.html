@@ -1,0 +1,79 @@
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html>
+{%block content%}{% load crispy_forms_tags %}
+<style>
+    .custom-btn {
+        padding: .375rem .75rem;
+        border-radius: .25rem;
+        width: auto;
+    }
+    /* .custom-btn-primary {
+
+    } */
+    
+    .form-control:focus {
+        /* border-color: #488fca; */
+        /* box-shadow: 0px 1px 1px rgba(163, 19, 19, 0.075) inset, 0px 0px 8px rgba(18, 60, 177, 0.5); */
+        color: #495057;
+        background-color: #fff;
+        border-color: #80bdff;
+        border: 1px solid #ced4da;
+        box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
+    }
+</style>
+
+<body>
+    <div style="background: burlywood;">
+        <center>
+            <h1 style="margin:30px;">Notification List</h1>
+        </center>
+        <form action="notification" method="POST">
+            {% csrf_token %}
+            <div class="form-group custom-margin-top">
+                <div class="d-flex justify-content-center" style="padding-top: 20px;">
+                    <label style="margin-top: .5rem;">List Of &nbsp;</label>
+                    <select name="dropdown" class="custom-btn custom-btn-primary form-control">
+                {%for i in c%}
+                <option value="{{i.cat_name}}" >{{i.cat_name}}</option>
+                {%endfor%}
+                </select>
+                </div>
+
+            </div>
+            <center>
+                <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Submit</button>
+            </center>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>Sr.No.</th>
+                <th>Files</th>
+                <th>CWM's L.No.</th>
+                <th>Letter Date</th>
+                <th>Subject</th>
+                <th>Category</th>
+                {% if request.session.admin is not none%}
+                <th>Action</th>{%endif%}
+            </tr>
+            {% for i in cat_list %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><a href="attachment/{{i.files}}" target="blank">{{i.files}}</a></td>
+                <td>{{i.cwm_letter_no}}</td>
+                <td>{{i.cwm_letter_date}}</td>
+                <td>{{i.subject}}</td>
+                <td>{{i.cat_name}}</td>
+                {% if request.session.admin is not none%}
+                <td>Delete</td>{%endif%}
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+
+</body>
+{%endblock%}
+
+</html>
